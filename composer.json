@@ -1,0 +1,12 @@
+{
+    "name": "moritzebeling/kirby-meta",
+    "description": "Simplify the rendering of html meta data",
+    "version": "0.1",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Moritz Ebeling",
+            "email": "email@moritzebeling.com"
+        }
+    ]
+}
