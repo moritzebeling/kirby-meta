@@ -1,6 +1,6 @@
 <?php
 
-Kirby::plugin('moritzebeling/kirby-meta', [
+Kirby::plugin('moritzebeling/meta', [
 
 	'options' => [
 		'fieldnames' => [
