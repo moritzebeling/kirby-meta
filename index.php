@@ -7,6 +7,11 @@ Kirby::plugin('moritzebeling/meta', [
 			'description' => 'description',
 			'tags' => 'tags',
 			'image' => false,
+		],
+		'thumbs' => [
+			'presets' => [
+				'ogimage' => [ 'width' => 2000, 'height' => 2000, 'crop' => true ]
+			]
 		]
 	],
 
