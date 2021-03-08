@@ -42,7 +42,7 @@ Kirby::plugin('moritzebeling/meta', [
 			$fieldname = option('moritzebeling.meta.fieldnames.image');
 
 			if( $this->hasImages() ){
-				if( $this->fieldname === false ){
+				if( $fieldname === false ){
 					return $this->image();
 				} else {
 					return $this->{$fieldname}->toFile();
