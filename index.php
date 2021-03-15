@@ -53,4 +53,21 @@ Kirby::plugin('moritzebeling/meta', [
 		},
 	],
 
+	'fileMethods' => [
+		'alt' => function (): Kirby\Cms\Field {
+
+			if( $this->content()->title()->isNotEmpty() ){
+				return $this->content()->title();
+			}
+			return $this->parent()->title();
+			return new Field( $this, 'title', $this->filename() );
+
+		},
+		'caption' => function (): Kirby\Cms\Field {
+
+			return $this->content()->caption();
+
+		}
+	]
+
 ]);
