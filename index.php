@@ -15,6 +15,31 @@ Kirby::plugin('moritzebeling/meta', [
 		]
 	],
 
+	'siteMethods' => [
+		'jsonLd' => function (): array {
+
+			$json = [
+				'@context' => 'https://schema.org/',
+				'@type' => 'WebSite',
+				'copyrightYear' => date('Y'),
+				'name' => $this->title()->value(),
+				'url' => $this->url()
+			];
+
+			if( $this->kirby()->languages()->count() > 1 ){
+				$json['inLanguage'] = [];
+				foreach( $site->kirby()->languages() as $lang ){
+					$jsonld['inLanguage'] = [
+						'@type' => 'Language',
+						'name' => $lang->name(),
+					];
+				}
+			}
+
+			return $json;
+		},
+	],
+
 	'pageMethods' => [
 		'metaDescription' => function (): string {
 
