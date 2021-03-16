@@ -28,7 +28,7 @@ Kirby::plugin('moritzebeling/meta', [
 
 			if( $this->kirby()->languages()->count() > 1 ){
 				$json['inLanguage'] = [];
-				foreach( $site->kirby()->languages() as $lang ){
+				foreach( $this->kirby()->languages() as $lang ){
 					$jsonld['inLanguage'] = [
 						'@type' => 'Language',
 						'name' => $lang->name(),
@@ -48,7 +48,10 @@ Kirby::plugin('moritzebeling/meta', [
 			if( $this->{$fieldname}()->isNotEmpty() ){
 				return $this->{$fieldname}()->value();
 			}
-			return $this->site()->{$fieldname}()->value();
+			if( $this->site()->{$fieldname}()->isNotEmpty() ){
+				return $this->site()->{$fieldname}()->value();
+			}
+			return $this->site()->title()->value();
 
 		},
 		'metaKeywords' => function (): array {
