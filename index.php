@@ -88,6 +88,13 @@ Kirby::plugin('moritzebeling/meta', [
 				return $this->content()->title();
 			}
 			return $this->parent()->title();
+
+		},
+		'title' => function (): Kirby\Cms\Field {
+
+			if( $this->content()->title()->isNotEmpty() ){
+				return $this->content()->title();
+			}
 			return new Field( $this, 'title', $this->filename() );
 
 		},
