@@ -1,0 +1,15 @@
+label: Meta & SEO
+icon: search
+columns:
+
+  left:
+    width: 2/3
+    fields:
+
+      meta: fields/meta/meta
+
+  right:
+    width: 1/3
+    sections:
+
+      uploads: sections/files
