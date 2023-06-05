@@ -11,7 +11,7 @@ columns:
     
   slug:
     label: Slug
-    value: "{{ page.slug }}"
+    value: "{{ page.id }}"
     mobile: false
   
   description:
@@ -29,4 +29,4 @@ columns:
     value: "{{ page.meta.priority }}"
     after: '%'
     mobile: false
-    width: 1/12
+    width: 1/14
