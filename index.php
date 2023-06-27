@@ -6,9 +6,13 @@ use Kirby\Cms\Html;
 use Kirby\Toolkit\Str;
 
 function jsonld( array $data ){
+    $flags = JSON_NUMERIC_CHECK | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES;
+    if( option('debug',false) ){
+        $flags |= JSON_PRETTY_PRINT;
+    }
     return Html::tag(
         'script',
-        json_encode($data, JSON_NUMERIC_CHECK | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ),
+        [json_encode($data, $flags)],
         ['type' => 'application/ld+json']
     );
 }
