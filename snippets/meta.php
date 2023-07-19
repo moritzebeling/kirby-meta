@@ -3,6 +3,9 @@
 $site_meta = $site->meta();
 $page_meta = $page->meta();
 
+$locale = $kirby->language()->locale();
+$locale = $locale[array_key_first( $locale )];
+
 ?>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -21,7 +24,7 @@ $page_meta = $page->meta();
 <meta property="og:url" content="<?= $page->url() ?>">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="<?= $site_meta->title() ?>">
-<meta property="og:locale" content="<?= (string)$kirby->language()->locale()[0] ?>">
+<meta property="og:locale" content="<?= $locale ?>">
 
 <?php if( $image = $page_meta->image()->toFile() ):
     $image = $image->thumb(option('moritzebeling.kirby-meta.preview_image.resize'))->url();
