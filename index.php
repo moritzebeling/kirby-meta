@@ -48,15 +48,23 @@ Kirby::plugin('moritzebeling/kirby-meta', [
     ],
 
     'siteMethods' => [
+        /**
+         * @kql-allowed
+         */
         'meta' => function () {
             $site_meta = $this->content()->meta()->toObject();
+            $update = [];
             if( $site_meta->title()->isEmpty() ){
                 $site_meta->update([
                     'title' => (string)$this->title(),
                 ]);
             }
+            $site_meta->update($update);
             return $site_meta;
         },
+        /**
+         * @kql-allowed
+         */
         'schema' => function (): array {
 
             $meta = $this->meta();
@@ -87,6 +95,9 @@ Kirby::plugin('moritzebeling/kirby-meta', [
         },
     ],
     'pageMethods' => [
+        /**
+         * @kql-allowed
+         */
         'meta' => function () {
 
             $page_meta = $this->content()->meta()->toObject();
@@ -131,6 +142,9 @@ Kirby::plugin('moritzebeling/kirby-meta', [
 
             return $page_meta;
         },
+        /**
+         * @kql-allowed
+         */
         'schema' => function (): array {
             $meta = $this->meta();
 
