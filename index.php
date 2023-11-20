@@ -53,13 +53,11 @@ Kirby::plugin('moritzebeling/kirby-meta', [
          */
         'meta' => function () {
             $site_meta = $this->content()->meta()->toObject();
-            $update = [];
             if( $site_meta->title()->isEmpty() ){
                 $site_meta->update([
                     'title' => (string)$this->title(),
                 ]);
             }
-            $site_meta->update($update);
             return $site_meta;
         },
         /**
@@ -121,15 +119,15 @@ Kirby::plugin('moritzebeling/kirby-meta', [
                     $priority = 100;
                 } else if( $this->isErrorPage() ){
                     $priority = 0;
-                } else if( $this->depth() > 1 ) {
+                } else if( $this->depth() > 1 && $parent_meta = $this->parent()->meta() ) {
                     $degrade = $this->isListed() ? 0.8 : 0.2;
-                    $priority = (int)$this->parent()->meta()->priority()->value() * $degrade;
+                    $priority = $parent_meta->priority()->toInt() * $degrade;
                     $priority = round($priority / 5) * 5;
                 } else {
                     $priority = $this->isListed() ? 80 : 20;
                 }
             } else {
-                $priority = (int)$page_meta->priority();
+                $priority = (int)$page_meta->priority()->value();
             }
 
             $page_meta->update([
